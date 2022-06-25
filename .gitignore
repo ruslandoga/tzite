@@ -29,3 +29,5 @@ tzdata_sqlite-*.tar
 .elixir_ls
 .DS_Store
 *.tar.gz
+tzdata/
+*.db*

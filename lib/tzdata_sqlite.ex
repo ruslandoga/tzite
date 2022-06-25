@@ -25,6 +25,12 @@ defmodule TzdataSqlite do
     end
   end
 
+  # maybe stream
+  def untar_tzdata do
+    true = File.exists?("tzdata-latest.tar.gz")
+    :erl_tar.extract('tzdata-latest.tar.gz', [:compressed, {:cwd, 'tzdata'}])
+  end
+
   defp download_tzdata_loop(conn, ref, state) do
     receive do
       message ->
@@ -42,13 +48,24 @@ defmodule TzdataSqlite do
     end
   end
 
+  def version(dir \\ "tzdata") do
+    [only_line_in_file] = Path.join(dir, "version") |> File.stream!() |> Enum.into([])
+    String.trim(only_line_in_file)
+  end
+
+  def process(file) do
+    file
+    |> File.stream!()
+    |> Enum.into([])
+  end
+
   defp process_responses([{:status, ref, status} | rest], ref, state),
     do: process_responses(rest, ref, Map.put(state, :status, status))
 
   defp process_responses([{:headers, ref, headers} | rest], ref, state),
     do: process_responses(rest, ref, Map.put(state, :headers, headers))
 
-  # TODO unzip stream
+  # TODO untar stream?
   defp process_responses([{:data, ref, data} | rest], ref, state) do
     :ok = IO.binwrite(state.fd, data)
     process_responses(rest, ref, state)
