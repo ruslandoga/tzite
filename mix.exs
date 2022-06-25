@@ -22,7 +22,8 @@ defmodule TzdataSqlite.MixProject do
   defp deps do
     [
       {:exqlite, "~> 0.11.2"},
-      {:mint, "~> 1.4"}
+      {:mint, "~> 1.4"},
+      {:castore, "~> 0.1.17"}
     ]
   end
 end
