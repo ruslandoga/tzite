@@ -28,3 +28,4 @@ tzdata_sqlite-*.tar
 .envrc
 .elixir_ls
 .DS_Store
+*.tar.gz
