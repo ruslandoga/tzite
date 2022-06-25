@@ -1,0 +1,31 @@
+name: tzdb
+
+on:
+  schedule:
+    - cron: 0 5 * * *
+  push:
+    branches: [master]
+
+jobs:
+  tzdb:
+    name: build timezone sqlite db
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@v1
+        with:
+          elixir-version: "1.13.4"
+          otp-version: "25.0.2"
+
+      - run: elixir dev/load.exs
+
+      # TODO
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: 2022a
+          tag_name: 2022a
+          files: tzdata_2022a.db

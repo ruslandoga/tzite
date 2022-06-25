@@ -1,21 +1,9 @@
-# TzdataSqlite
+tzdata baked by sqlite with only actively used tzs held in memory
 
-**TODO: Add description**
+TODO:
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `tzdata_sqlite` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:tzdata_sqlite, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/tzdata_sqlite>.
-
+- [x] periodically build tzdata sqlite db in github actions (TODO remove hardcoded values, switch away tfrom tzdata for preprocessing)
+- [ ] download sqlite db from github
+- [ ] lz4 or gzip db
+- [ ] read from sqlite with no sqlite cache
+- [ ] store actively used tzs in memory
