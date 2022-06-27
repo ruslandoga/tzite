@@ -20,5 +20,4 @@ jobs:
           elixir-version: "1.13.4"
           otp-version: "25.0.2"
 
-      - name: Set up Docker Buildx
-        run: echo 'all ok'
+      - run: echo 'all ok'
