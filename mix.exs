@@ -30,7 +30,8 @@ defmodule TzdataSqlite.MixProject do
       {:exqlite, "~> 0.11.2"},
       {:mint, "~> 1.4"},
       {:castore, "~> 0.1.17"},
-      {:ecto_sqlite3, "~> 0.7.7"}
+      {:ecto_sqlite3, "~> 0.7.7"},
+      {:rexbug, "~> 1.0", only: :dev}
     ]
   end
 end
