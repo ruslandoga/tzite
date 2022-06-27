@@ -41,7 +41,7 @@ defmodule TzDB do
 
   import Ecto.Query
 
-  # SELECT * FROM tzdata WHERE key = 'Europe/Moscow' AND from_utc > 63823532246 ORDER BY from_utc LIMIT 1;
+  # TODO test Europe/Vienna
   defp period_from_utc_gregorian_seconds(gregorian_seconds, time_zone) do
     "tzdata"
     |> where(key: ^time_zone)
