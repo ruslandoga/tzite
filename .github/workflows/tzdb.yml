@@ -21,4 +21,4 @@ jobs:
           otp-version: "25.0.2"
 
       - run: elixir dev/load.exs
-      - run: ls
+      - run: file tzdata_2022a.db
