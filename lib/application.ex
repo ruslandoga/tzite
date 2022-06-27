@@ -4,7 +4,8 @@ defmodule TzdataSqlite.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [TzdataSqlite.Repo]
+    # dynamic?
+    children = []
     Supervisor.start_link(children, strategy: :one_for_one, name: TzdataSqlite.Supervisor)
   end
 end

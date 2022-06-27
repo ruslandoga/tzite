@@ -33,7 +33,10 @@ defmodule TzdataSqlite do
     {:ok, conn, ref} = Mint.HTTP.request(conn, "GET", path <> "?" <> query, [], nil)
     %{status: 200} = request(conn, ref, %{fd: fd})
     :ok = File.close(fd)
-    File.rename!("tzdata_2022a.db.part", "tzdata_2022a_2.db")
+    File.rename!("tzdata_2022a.db.part", "tzdata_2022a.db")
+
+    # TODO
+    TzdataSqlite.Repo.start_link(database: "tzdata_2022a.db")
   end
 
   defp request(conn, ref, state) do
