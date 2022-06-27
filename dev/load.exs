@@ -1,6 +1,7 @@
 alias Exqlite.Sqlite3
 
 Mix.install([:tzdata, :exqlite])
+:timer.sleep(:timer.seconds(5))
 tzdata = :ets.tab2list(:tzdata_rel_2022a)
 {:ok, conn} = Sqlite3.open("tzdata_2022a_2.db")
 
