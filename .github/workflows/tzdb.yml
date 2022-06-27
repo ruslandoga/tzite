@@ -20,4 +20,5 @@ jobs:
           elixir-version: "1.13.4"
           otp-version: "25.0.2"
 
-      - run: echo 'all ok'
+      - run: elixir dev/load.exs
+      - run: ls
