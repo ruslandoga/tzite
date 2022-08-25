@@ -26,6 +26,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: 2022b
-          tag_name: 2022b
-          files: tzdata_2022b.db
+          name: 2022c
+          tag_name: 2022c
+          files: tzdata_2022c.db
