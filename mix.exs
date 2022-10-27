@@ -31,7 +31,9 @@ defmodule TzdataSqlite.MixProject do
       {:mint, "~> 1.4"},
       {:castore, "~> 0.1.17"},
       {:ecto_sqlite3, "~> 0.7.7"},
-      {:rexbug, "~> 1.0", only: :dev}
+      {:rexbug, "~> 1.0", only: :dev},
+      {:benchee, "~> 1.1", only: :bench},
+      {:nimble_parsec, "~> 1.2", only: [:dev, :test]}
     ]
   end
 end

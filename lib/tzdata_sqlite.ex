@@ -13,14 +13,14 @@ defmodule TzdataSqlite do
       Mint.HTTP.request(
         conn,
         "GET",
-        "/ruslandoga/tzdata_sqlite/releases/download/2022a/tzdata_2022a.db",
+        "/ruslandoga/tzite/releases/download/2022e/tzdata_2022e.db",
         [],
         nil
       )
 
     # TODO
-    File.rm("tzdata_2022a.db.part")
-    {:ok, fd} = File.open("tzdata_2022a.db.part", [:binary, :append])
+    File.rm("tzdata_2022e.db.part")
+    {:ok, fd} = File.open("tzdata_2022e.db.part", [:binary, :append])
     %{status: 302, headers: headers} = request(conn, ref, %{})
 
     location =
@@ -33,10 +33,10 @@ defmodule TzdataSqlite do
     {:ok, conn, ref} = Mint.HTTP.request(conn, "GET", path <> "?" <> query, [], nil)
     %{status: 200} = request(conn, ref, %{fd: fd})
     :ok = File.close(fd)
-    File.rename!("tzdata_2022a.db.part", "tzdata_2022a.db")
+    File.rename!("tzdata_2022e.db.part", "tzdata_2022e.db")
 
     # TODO
-    TzdataSqlite.Repo.start_link(database: "tzdata_2022a.db")
+    TzdataSqlite.Repo.start_link(database: "tzdata_2022e.db")
   end
 
   defp request(conn, ref, state) do
